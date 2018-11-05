@@ -83,7 +83,7 @@ static struct adreno_context_type ctxt_type_table[] = {KGSL_CONTEXT_TYPES};
 static const char *get_api_type_str(unsigned int type)
 {
 	int i;
-	for (i = 0; i < ARRAY_SIZE(ctxt_type_table) - 1; i++) {
+	for (i = 0; i < ARRAY_SIZE(ctxt_type_table); i++) {
 		if (ctxt_type_table[i].type == type)
 			return ctxt_type_table[i].str;
 	}
