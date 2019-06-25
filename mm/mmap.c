@@ -318,9 +318,9 @@ SYSCALL_DEFINE1(brk, unsigned long, brk)
 
 	down_write(&mm->mmap_sem);
 
-#ifdef CONFIG_COMPAT_BRK
+#if defined(CONFIG_ASLR_NONE) || defined(CONFIG_ASLR_PARTIAL)
 	/*
-	 * CONFIG_COMPAT_BRK can still be overridden by setting
+	 * CONFIG_ASLR_NONE can still be overridden by setting
 	 * randomize_va_space to 2, which will still cause mm->start_brk
 	 * to be arbitrarily shifted
 	 */

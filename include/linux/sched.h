@@ -1755,7 +1755,7 @@ struct task_struct {
 #ifdef CONFIG_MEMCG_KMEM
 	unsigned memcg_kmem_skip_account:1;
 #endif
-#ifdef CONFIG_COMPAT_BRK
+#if defined(CONFIG_ASLR_NONE) || defined(CONFIG_ASLR_PARTIAL)
 	unsigned brk_randomized:1;
 #endif
 #ifdef CONFIG_CGROUPS
