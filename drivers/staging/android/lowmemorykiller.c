@@ -46,7 +46,7 @@
 #include <linux/poll.h>
 #define CREATE_TRACE_POINTS
 #include "trace/lowmemorykiller.h"
-static u32 lowmem_debug_level = 1;
+static u32 lowmem_debug_level = 0;
 extern int extra_free_kbytes;
 
 static short lowmem_adj[6] = {
