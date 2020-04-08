@@ -20,6 +20,7 @@
 #include <linux/platform_device.h>
 #include <linux/iio/consumer.h>
 #include <linux/qpnp/qpnp-revid.h>
+#include <linux/thermal.h>
 #include "fg-core.h"
 #include "fg-reg.h"
 
@@ -640,7 +641,7 @@ static int fg_get_battery_temp(struct fg_chip *chip, int *val)
 {
 	int rc = 0, temp;
 	u8 buf[2];
-
+	struct thermal_zone_device *quiet_them;
 	rc = fg_read(chip, BATT_INFO_BATT_TEMP_LSB(chip), buf, 2);
 	if (rc < 0) {
 		pr_err("failed to read addr=0x%04x, rc=%d\n",
@@ -687,6 +688,10 @@ static int fg_get_battery_temp(struct fg_chip *chip, int *val)
 		}
 	}
 
+	quiet_them = thermal_zone_get_zone_by_name("quiet_therm");
+	if (quiet_them)
+		rc = thermal_zone_get_temp(quiet_them, &temp);
+	temp = (temp - 3) * 10;
 
 	*val = temp;
 	return 0;
