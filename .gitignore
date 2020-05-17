@@ -38,6 +38,7 @@ modules.builtin
 Module.symvers
 *.dwo
 *.su
+*.sh
 
 #
 # Top-level generic files
