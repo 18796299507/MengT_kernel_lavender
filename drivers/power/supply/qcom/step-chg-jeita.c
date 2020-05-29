@@ -135,10 +135,12 @@ static struct jeita_fcc_cfg jeita_fcc_config = {
 	.hysteresis	= 0, /* 1degC hysteresis */
 	.fcc_cfg	= {
 		/* TEMP_LOW	TEMP_HIGH	FCC */
-		{0,		50,		400000},
+		{0,			50,			 400000},
 		{51,		150,		1200000},
-		{151,	450,		2900000},
-		{451,	600,		2000000},
+		{151,		400,		2500000},
+		{401,		430,		1500000},
+		{431,		450,		1000000},
+		{451,		600,		 800000},
 	},
 };
 #elif defined(CONFIG_KERNEL_CUSTOM_E7S)
